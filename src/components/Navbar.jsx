@@ -29,7 +29,7 @@ const Navbar = () => {
             src={logotext}
             alt="logo"
             className="sm:w-[90px] sm:h-[90px] w-[85px] h-[85px] -ml-[0.6rem] object-contain"
-          /><p className='text-eerieBlack text-[20px] font-medium font-mova'> (500235961)s </p>
+          /><p className='text-eerieBlack text-[20px] font-medium font-mova'> (500235961)ss </p>
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-14 mt-2">
           {navLinks.map((nav) => (
