@@ -34,6 +34,5 @@ RUN chmod +x /usr/share/nginx/html/env.sh
 
 # Expose port 80
 EXPOSE 80
-#
-# Start nginx with env script
+#%ginx with env script
 CMD ["/usr/share/nginx/html/env.sh"] 
