@@ -15,7 +15,7 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   
-  const texts = ["Avneet", "Techie Avneet, lets build future"];
+  const texts = ["Avneet", "Techie Avneet, lets build our future"];
   const description = "A skilled full-stack developer with strong expertise in React, Next.js, cloud technologies, and AI-powered web applications. Feel free to reach out using the contact form below.";
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
