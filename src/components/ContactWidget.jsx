@@ -8,6 +8,11 @@ const emailClient = new EmailClient(
   window.env?.VITE_AZURE_COMMUNICATION_KEY ??
   (import.meta.env.DEV ? import.meta.env.VITE_AZURE_COMMUNICATION_KEY : "")
 );
+const azureSenderEmail = window.env?.VITE_AZURE_SENDER_EMAIL ??
+  (import.meta.env.DEV ? import.meta.env.VITE_AZURE_SENDER_EMAIL : "");
+
+const ownerEmailAddress = window.env?.VITE_OWNER_EMAIL ??
+  (import.meta.env.DEV ? import.meta.env.VITE_OWNER_EMAIL : "");
 
 const ContactWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +31,7 @@ const ContactWidget = () => {
     const emailBody = `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`;
 
     const clientEmail = {
-      senderAddress: 'DoNotReply@daa7cc9a-7400-4647-a08f-bf18fed95e35.azurecomm.net',
+      senderAddress: azureSenderEmail,
       content: {
         subject: "Message Received - Avneet's Portfolio",
         plainText: `Hi ${form.name},\n\nThank you for reaching out! I have received your message and will get back to you as soon as possible.\n\nBest regards,\nAvneet`,
@@ -35,12 +40,12 @@ const ContactWidget = () => {
     };
 
     const ownerEmail = {
-      senderAddress: 'DoNotReply@daa7cc9a-7400-4647-a08f-bf18fed95e35.azurecomm.net',
+      senderAddress: azureSenderEmail,
       content: {
         subject: `New Contact Form Message from ${form.name}`,
         plainText: emailBody,
       },
-      recipients: { to: [{ address: 'avneetpandey82@gmail.com' }] },
+      recipients: { to: [{ address: ownerEmailAddress }] },
     };
 
     try {
