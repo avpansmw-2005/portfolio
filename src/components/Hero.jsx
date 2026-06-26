@@ -2,8 +2,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { styles } from '../styles';
 import { avneet, bwmap, worldmap } from '../assets';
-import { getSystemInfo } from '../utils/systemInfo';
-import { addEntry } from '../utils/firebaseService';
 import { StarsCanvas } from './canvas';
 
 const Hero = () => {
@@ -62,21 +60,6 @@ const Hero = () => {
     };
   }, [charIndex, isDeleting, textIndex]);
 
-  useEffect(() => {
-    const logVisit = async () => {
-      try {
-        const systemInfo = getSystemInfo();
-        await addEntry({
-          type: 'visit',
-          ...systemInfo
-        });
-      } catch (error) {
-        console.error('Error logging visit:', error);
-      }
-    };
-
-    logVisit();
-  }, []);
 
   return (
       <section
@@ -122,7 +105,7 @@ const Hero = () => {
               transition={{ duration: 0.5 }}
               className="text-4xl  sm:text-5xl md:text-6xl font-mova font-bold text-eerieBlack mb-5 tracking-tight"
             >
-              <span className="text-[#915EFF] bg-gradient-to-r from-[#915EFF] to-[#7c4dff] bg-clip-text text-transparent">I'm </span>
+              <span className="text-[#915EFF] bg-gradient-to-r from-[#915EFF] to-[#7c4dff] bg-clip-text text-transparent">I&apos;m </span>
               <span className="text-eerieBlack">
                 {currentText}
               </span>

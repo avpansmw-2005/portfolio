@@ -9,7 +9,6 @@ import {
   Projects,
 } from './components';
 import Education from './components/Education';
-import DataView from './components/DataView';
 import ContactWidget from './components/ContactWidget';
 
 import { ToastContainer } from 'react-toastify';
@@ -48,7 +47,6 @@ const App = () => {
               </div>
             </>
           } />
-          <Route path="/data-view" element={<DataView />} />
         </Routes>
 
         {/* Floating Contact Widget - Always visible */}
