@@ -46,20 +46,20 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Full Stack Developer",
-    icon: frontend,
+    title: "Generative AI and LLM Creator",
+    icon: ai,
   },
   {
-    title: "Devops Engineer",
-    icon: backend,
+    title: "Full Stack Developer",
+    icon: frontend,
   },
   {
     title: "Cloud Administrator",
     icon: cloud,
   },
   {
-    title: "Generative AI and LLM Creator",
-    icon: ai,
+    title: "Devops Engineer",
+    icon: backend,
   },
 ];
 
@@ -126,39 +126,25 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Freelancer",
+    title: "Full Stack Developer (Freelance)",
     company_name: "Dedicated Client",
     icon: freelancing,
     iconBg: "#333333",
-    date: "May 2024 - Mar 2025",
+    date: "Jan 2026 - Present",
   },
   {
-    title: "Associate Software Developer L-2",
+    title: "Software Engineer Intern",
+    company_name: "MortgEdge",
+    icon: freelancing,
+    iconBg: "#333333",
+    date: "Sep 2025 - Dec 2025",
+  },
+  {
+    title: "Associate Software Developer",
     company_name: "Valuecoders Software Services",
     icon: vcLogo,
     iconBg: "#333333",
-    date: "Oct 2022 - Mar 2024",
-  },
-  {
-    title: "Associate Software Developer L-1",
-    company_name: "Valuecoders Software Services",
-    icon: vcLogo,
-    iconBg: "#333333",
-    date: "Aug 2021 - Sep 2022",
-  },
-  {
-    title: "Junior Associate Software Developer",
-    company_name: "Valuecoders Software Services",
-    icon: vcLogo,
-    iconBg: "#333333",
-    date: "Jan 2021 - Aug 2021",
-  },
-  {
-    title: "Campus Ambassador",
-    company_name: "Conding Ninjas",
-    icon: codingNinja,
-    iconBg: "#333333",
-    date: "Aug 2020 - Dec 2020",
+    date: "Feb 2021 - Mar 2024",
   },
 ];
 

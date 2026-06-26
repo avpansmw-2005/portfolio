@@ -48,10 +48,10 @@ export default {
         experience:
           "linear-gradient(135deg, rgba(244,244,246,0.5) 60%, rgba(10,10,10,0.2) 100%),url('/src/assets/backgrounds/white-abstract.png')",
         experienceLight:
-          'linear-gradient(137deg, rgba(244,244,246,0.5) 60%, rgba(10,10,10,0.9) 60%)',
-        hero: 'linear-gradient(135deg, rgba(244,244,246,0.8) 60%, rgba(10,10,10,0.95) 60%)',
+          'linear-gradient(137deg, rgba(244,244,246,1) 60%, rgba(10,10,10,1) 60.2%)',
+        hero: 'linear-gradient(135deg, rgba(244,244,246,1) 60%, rgba(10,10,10,1) 60.2%)',
         'hero-mobile':
-          'linear-gradient(137deg, rgba(244,244,246,0.8) 60%, rgba(10,10,10,1) 60%)',
+          'linear-gradient(137deg, rgba(244,244,246,1) 60%, rgba(10,10,10,1) 60.2%)',
         tech: "linear-gradient(165deg, rgba(20,20,20,0.8) 100%, rgba(109,109,116,0.8) 100%), url('/src/assets/backgrounds/nairobi.png')",
       },
       fontFamily: {

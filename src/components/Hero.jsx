@@ -4,27 +4,23 @@ import { styles } from '../styles';
 import { avneet, bwmap, worldmap } from '../assets';
 import { getSystemInfo } from '../utils/systemInfo';
 import { addEntry } from '../utils/firebaseService';
+import { StarsCanvas } from './canvas';
 
 const Hero = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-  });
-
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
-  
+
   const texts = ["Avneet", "Techie Avneet, lets build the future"];
-  const description = "A skilled full-stack developer with strong expertise in React, Next.js, cloud technologies, and AI-powered web applications. Feel free to reach out using the contact form below.";
+  const description = "Senior Full Stack Developer with 5 years experience building scalable web platforms, intelligent AI systems, and cloud native solutions using React, Next.js, Node.js, and Azure.";
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
 
   useEffect(() => {
-    const TYPING_SPEED = 20;    // Typing speed per character
-    const DELETING_SPEED = 20;   // Deleting speed per character
-    const PAUSE_BEFORE_DELETE = 50; // Pause before deleting
-    const PAUSE_AFTER_DELETE = 50;   // Pause before starting next typing
+    const TYPING_SPEED = 20;
+    const DELETING_SPEED = 20;
+    const PAUSE_BEFORE_DELETE = 50;
+    const PAUSE_AFTER_DELETE = 50;
 
     let intervalId;
     let timeoutId;
@@ -34,11 +30,9 @@ const Hero = () => {
         const currentFullText = texts[textIndex];
 
         if (!isDeleting && charIndex < currentFullText.length) {
-          // Typing
           setCurrentText(currentFullText.slice(0, charIndex + 1));
           setCharIndex(prev => prev + 1);
         } else if (!isDeleting && charIndex === currentFullText.length) {
-          // Finished typing, pause
           clearInterval(intervalId);
           if (textIndex === 0) {
             timeoutId = setTimeout(() => {
@@ -46,15 +40,12 @@ const Hero = () => {
               startTyping();
             }, PAUSE_BEFORE_DELETE);
           } else {
-            // Show description after second text
             setTimeout(() => setShowDescription(true), 300);
           }
         } else if (isDeleting && charIndex > 0) {
-          // Deleting
           setCurrentText(currentFullText.slice(0, charIndex - 1));
           setCharIndex(prev => prev - 1);
         } else if (isDeleting && charIndex === 0) {
-          // Switch to next text
           clearInterval(intervalId);
           setIsDeleting(false);
           setTextIndex(1);
@@ -65,20 +56,11 @@ const Hero = () => {
 
     startTyping();
 
-    // Cleanup function
     return () => {
       clearInterval(intervalId);
       clearTimeout(timeoutId);
     };
   }, [charIndex, isDeleting, textIndex]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
 
   useEffect(() => {
     const logVisit = async () => {
@@ -97,26 +79,40 @@ const Hero = () => {
   }, []);
 
   return (
-    <>
-      <div className="absolute top-0 left-0 z-0 h-[100vh] w-full ">
-        <img
-          src={bwmap}
-          alt="world map"
-          className="w-full h-full sm:block hidden object-cover"
-        />
-      </div>
-      <div className="absolute top-0 left-0 z-0 h-[100vh] ">
-        <img
-          src={worldmap}
-          alt="world map"
-          className="w-full h-full sm:hidden block object-cover"
-        />
-      </div>
       <section
-        className="relative flex sm:flex-row flex-col w-full h-screen mx-auto 
+        className="relative flex sm:flex-row flex-col w-full h-screen mx-auto
         sm:bg-hero bg-hero-mobile bg-top bg-cover bg-no-repeat overflow-hidden">
+        {/* World map background - masked to show only on the light gray (white) side */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-[0.25] mix-blend-multiply sm:block hidden"
+          style={{
+            backgroundImage: `url(${bwmap})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'top',
+            backgroundRepeat: 'no-repeat',
+            WebkitMaskImage: 'linear-gradient(135deg, black 60%, transparent 60.2%)',
+            maskImage: 'linear-gradient(135deg, black 60%, transparent 60.2%)'
+          }}
+        />
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-[0.3] mix-blend-multiply sm:hidden block"
+          style={{
+            backgroundImage: `url(${worldmap})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'top',
+            backgroundRepeat: 'no-repeat',
+            WebkitMaskImage: 'linear-gradient(137deg, black 60%, transparent 60.2%)',
+            maskImage: 'linear-gradient(137deg, black 60%, transparent 60.2%)'
+          }}
+        />
+
+        {/* Stars background — sits behind all content */}
+        <div className="absolute inset-0 pointer-events-none">
+          <StarsCanvas />
+        </div>
+
         <div
-          className={`absolute inset-0 sm:top-[230px] top-[200px]  
+          className={`absolute inset-0 sm:top-[230px] top-[200px]
           ${styles.paddingX} max-w-7xl mx-auto flex flex-row items-start
           justify-start gap-3`}>
           <div>
@@ -142,7 +138,7 @@ const Hero = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
+                  transition={{
                     duration: 1,
                     ease: "easeOut"
                   }}
@@ -162,11 +158,11 @@ const Hero = () => {
         </div>
 
         <div
-          className="absolute xs:bottom-10 bottom-32 w-full 
+          className="absolute xs:bottom-10 bottom-32 w-full
           flex justify-center items-center">
           <a href="#about">
             <div
-              className="w-[35px] h-[64px] rounded-3xl border-4 
+              className="w-[35px] h-[64px] rounded-3xl border-4
             border-french border-dim flex
             justify-center items-start p-2">
               <motion.div
@@ -186,7 +182,7 @@ const Hero = () => {
 
         <div>
           <img
-            className="absolute bottom-0 ml-[45vw] 
+            className="absolute bottom-0 ml-[45vw]
             lg:ml-[70vw] md:ml-[40vw] xmd:ml-[50vw] 2xl:ml-[63vw]
             sm:h-[90vh] md:h-[70vh] xl:h-[80vh]"
             src={avneet}
@@ -194,7 +190,6 @@ const Hero = () => {
           />
         </div>
       </section>
-    </>
   );
 };
 

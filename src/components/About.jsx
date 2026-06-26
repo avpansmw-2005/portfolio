@@ -9,7 +9,7 @@ const ServiceCard = ({ index, title, icon }) => {
   return (
     <motion.div
       variants={fadeIn('right', 'spring', 0.5 * index, 0.75)}
-      className="xs:w-[250px] w-full card-gradient p-[1px] rounded-[20px] shadow-card">
+      className="xs:w-[200px] w-full card-gradient p-[1px] rounded-[20px] shadow-card">
       <div
         options={{
           max: 45,
@@ -30,17 +30,20 @@ const About = () => {
   return (
     <div className="-mt-[6rem]">
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
 
       <motion.p
         variants={fadeIn('', '', 0.1, 1)}
-        className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]">
-       I am an experienced Software Developer with expertise in the MERN stack, ReactJS, and Node.js, dedicated to crafting high-quality, scalable applications. With a solid foundation in both front-end and back-end technologies, I excel at delivering robust, user-friendly solutions that meet complex technical requirements. Currently pursuing a specialization in Cloud Computing at Loyalist College, I am continually expanding my technical skill set to stay at the forefront of industry advancements.
+        className="mt-4 text-taupe text-[18px] leading-[30px] w-full">
+        Over the past 5+ years, I've evolved from writing my first production API to architecting full-stack platforms that serve thousands of users. My sweet spot lies at the intersection of React/Next.js frontends, Node.js microservices, and intelligent AI systems.
+        <br /><br />
+        Currently, I'm building intelligent web applications as a Freelance Full Stack Developer, leveraging Generative AI, LangChain, and cloud native architectures on Azure. Previously, I honed my enterprise skills at MortgEdge as a Software Engineer Intern, delivering React-based financial solutions and secure API integrations.
+        <br /><br />
+        I thrive on transforming fuzzy requirements into clean, testable code — whether that's a real-time chatbot pipeline, a CI/CD deployment on Azure Container Registry, or a pixel-perfect UI. When I'm not debugging, you'll find me exploring agentic AI workflows or optimizing database queries.
       </motion.p>
 
-      <div className="mt-20 flex flex-wrap gap-10">
+      <div className="mt-20 flex flex-wrap sm:flex-nowrap gap-6 justify-center">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
